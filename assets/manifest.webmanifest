@@ -1,7 +1,7 @@
 {
-  "name": "aha-template",
-  "short_name": "aha-template",
-  "description": "aha-template",
+  "name": "waha-template",
+  "short_name": "waha-template",
+  "description": "waha-template",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#fff",
