@@ -16,3 +16,9 @@ env_logger = "0.11.3"
 dotenv = "0.15.0"
 tower = { version = "0.4", features = ["util"] }
 tower-http = { version = "0.5.0", features = ["fs", "trace"] }
+memory-serve = "0.4.5"
+
+[build-dependencies]
+grass = "0.13.2"
+glob = "0.3.1"
+lightningcss = "1.0.0-alpha.55"

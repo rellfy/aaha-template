@@ -1,16 +1,18 @@
+use askama_axum::Template;
 use axum::{
-    routing::{get, post},
     http::StatusCode,
+    routing::{get, post},
     Json, Router,
 };
+use log::info;
+use memory_serve::{load_assets, MemoryServe};
 use serde::{Deserialize, Serialize};
-use askama_axum::Template;
 use tower::ServiceExt;
 use tower_http::{
     services::{ServeDir, ServeFile},
     trace::TraceLayer,
 };
-use log::info;
+
 mod api;
 
 #[derive(Template)]
@@ -25,15 +27,16 @@ async fn main() {
     env_logger::init();
     // initialize tracing
     // tracing_subscriber::fmt::init();
-
+    let memory_router = MemoryServe::new(load_assets!("assets")).into_router();
     // build our application with a route
     let app = Router::new()
+        .merge(memory_router)
         // `GET /` goes to `root`
         .route("/", get(root))
         .route("/api/user/auth", api::user::auth::route())
         .nest_service("/assets", ServeDir::new("assets"));
-        // `POST /users` goes to `create_user`
-        // .route("/users", post(create_user));
+    // `POST /users` goes to `create_user`
+    // .route("/users", post(create_user));
 
     // run our app with hyper, listening globally on port 3000
     info!("running server http://127.0.0.1:3000");
@@ -44,6 +47,6 @@ async fn main() {
 // basic handler that responds with a static string
 async fn root() -> IndexPage<'static> {
     IndexPage {
-        text: "hello!!!!!!!"
+        text: "hello!!!!!!!",
     }
 }

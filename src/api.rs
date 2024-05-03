@@ -1,4 +1,3 @@
-
 pub mod user {
     pub mod auth {
         use axum::routing::{get, MethodRouter};
@@ -11,7 +10,7 @@ pub mod user {
             "GET".to_string()
         }
 
-        fn handle_post() -> String{
+        fn handle_post() -> String {
             "POST".to_string()
         }
     }
