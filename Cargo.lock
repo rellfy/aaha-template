@@ -116,7 +116,7 @@ dependencies = [
 [[package]]
 name = "askama"
 version = "0.13.0"
-source = "git+https://github.com/djc/askama?rev=03690ab46bbb9cc10f688ebfe003986f9cf4999c#03690ab46bbb9cc10f688ebfe003986f9cf4999c"
+source = "git+https://github.com/djc/askama?rev=eec57523103e8455961b27c68510c190ed03260d#eec57523103e8455961b27c68510c190ed03260d"
 dependencies = [
  "askama_derive",
  "askama_escape",
@@ -128,7 +128,7 @@ dependencies = [
 [[package]]
 name = "askama_axum"
 version = "0.5.0"
-source = "git+https://github.com/djc/askama?rev=03690ab46bbb9cc10f688ebfe003986f9cf4999c#03690ab46bbb9cc10f688ebfe003986f9cf4999c"
+source = "git+https://github.com/djc/askama?rev=eec57523103e8455961b27c68510c190ed03260d#eec57523103e8455961b27c68510c190ed03260d"
 dependencies = [
  "askama",
  "axum-core",
@@ -138,7 +138,7 @@ dependencies = [
 [[package]]
 name = "askama_derive"
 version = "0.13.0"
-source = "git+https://github.com/djc/askama?rev=03690ab46bbb9cc10f688ebfe003986f9cf4999c#03690ab46bbb9cc10f688ebfe003986f9cf4999c"
+source = "git+https://github.com/djc/askama?rev=eec57523103e8455961b27c68510c190ed03260d#eec57523103e8455961b27c68510c190ed03260d"
 dependencies = [
  "askama_parser",
  "basic-toml",
@@ -153,12 +153,12 @@ dependencies = [
 [[package]]
 name = "askama_escape"
 version = "0.11.0"
-source = "git+https://github.com/djc/askama?rev=03690ab46bbb9cc10f688ebfe003986f9cf4999c#03690ab46bbb9cc10f688ebfe003986f9cf4999c"
+source = "git+https://github.com/djc/askama?rev=eec57523103e8455961b27c68510c190ed03260d#eec57523103e8455961b27c68510c190ed03260d"
 
 [[package]]
 name = "askama_parser"
 version = "0.2.1"
-source = "git+https://github.com/djc/askama?rev=03690ab46bbb9cc10f688ebfe003986f9cf4999c#03690ab46bbb9cc10f688ebfe003986f9cf4999c"
+source = "git+https://github.com/djc/askama?rev=eec57523103e8455961b27c68510c190ed03260d#eec57523103e8455961b27c68510c190ed03260d"
 dependencies = [
  "nom",
 ]
