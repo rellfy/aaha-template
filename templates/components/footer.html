@@ -1,14 +1,11 @@
 <div class="footer">
   <div class="wrapper">
-    <!--    <PageLink to="info" className={styles.button}>-->
-    <!--      <i class={classNames("fa-solid fa-circle-info", styles.icon)}></i>-->
-    <!--    </PageLink>-->
     <span
       class="button"
-      hx-get="/"
+      hx-get="/home/content"
       hx-swap="none"
+      x-data
       x-on:click="
-        $store.page.setIsLoading(true);
         window.history.pushState(null, window.document.title, '/');
       "
     >
@@ -16,10 +13,10 @@
     </span>
     <span
       class="button"
-      hx-get="/user"
+      hx-get="/user/content"
       hx-swap="none"
+      x-data
       x-on:click="
-        $store.page.setIsLoading(true);
         window.history.pushState(null, window.document.title, '/user');
       "
     >

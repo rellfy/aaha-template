@@ -4,8 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-askama = "0.12.1"
-askama_axum = "0.4.0"
+askama = { git = "https://github.com/djc/askama", rev = "03690ab46bbb9cc10f688ebfe003986f9cf4999c" }
+askama_axum = { git = "https://github.com/djc/askama", rev = "03690ab46bbb9cc10f688ebfe003986f9cf4999c" }
 axum = "0.7.5"
 tokio = { version = "1", features = ["full"] }
 serde = { version = "1.0", features = ["derive"] }

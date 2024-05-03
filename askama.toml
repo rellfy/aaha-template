@@ -1,3 +1,3 @@
 [general]
 dirs = ["templates"]
-whitespace = "preserve"
+whitespace = "suppress"

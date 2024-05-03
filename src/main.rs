@@ -1,7 +1,6 @@
 use crate::routes::router;
 use log::info;
 
-mod api;
 mod routes;
 
 #[tokio::main]

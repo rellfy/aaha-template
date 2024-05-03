@@ -10,10 +10,11 @@
   <title>waha-template</title>
 </head>
 <body>
-<div class="root" x-data>
+<div class="root">
   {% include "components/header.html" %}
   <div class="page">
-    {% block page %}{% endblock %}
+    {% block page %}
+    {% endblock %}
   </div>
   {% include "components/footer.html" %}
 </div>

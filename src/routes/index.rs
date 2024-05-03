@@ -6,6 +6,12 @@ use axum::Router;
 #[template(path = "pages/home.html")]
 struct HomePage;
 
+#[derive(Template)]
+#[template(path = "pages/home.html", block = "page")]
+struct HomePageContent;
+
 pub fn router() -> Router {
-    Router::new().route("/", get(|| async move { HomePage }))
+    Router::new()
+        .route("/", get(|| async move { HomePage }))
+        .route("/home/content", get(|| async move { HomePageContent }))
 }
