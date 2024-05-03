@@ -1,6 +1,6 @@
-# waha-template
+# ahaa-template
 
-- warp/axum (todo: decide)
+- [axum](https://github.com/tokio-rs/axum)
 - [askama](https://github.com/djc/askama)
 - [htmx](https://htmx.org)
 - [alpine](https://alpinejs.dev)
