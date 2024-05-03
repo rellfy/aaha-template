@@ -1,4 +1,4 @@
-# ahaa-template
+# aaha-template
 
 - [axum](https://github.com/tokio-rs/axum)
 - [askama](https://github.com/djc/askama)
