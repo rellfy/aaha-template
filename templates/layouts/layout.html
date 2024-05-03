@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta content="this is an aha-template" name="description"/>
+  <meta content="width=device-width" name="viewport"/>
+  <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+  <meta content={Astro.generator}/ name="generator">
+  <link href="/assets/artifacts/bundle.css" rel="stylesheet">
+  <title>waha-template</title>
+</head>
+<body>
+<div class="root" x-data>
+  {% include "components/header.html" %}
+  <div class="page">
+    {% block page %}{% endblock %}
+  </div>
+  {% include "components/footer.html" %}
+</div>
+</body>
+<script
+  crossorigin="anonymous"
+  src="https://kit.fontawesome.com/89c6b9d148.js"></script>
+<script src="https://unpkg.com/htmx.org@1.9.12"></script>
+<script defer src="//unpkg.com/alpinejs"></script>
+<script>
+    document.addEventListener("alpine:init", () => {
+        Alpine.store("page", {});
+    });
+</script>
+</html>

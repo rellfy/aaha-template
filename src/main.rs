@@ -16,10 +16,8 @@ use tower_http::{
 mod api;
 
 #[derive(Template)]
-#[template(path = "page/index.html")]
-struct IndexPage<'a> {
-    text: &'a str,
-}
+#[template(path = "pages/home.html")]
+struct HomePage;
 
 #[tokio::main]
 async fn main() {
@@ -45,8 +43,6 @@ async fn main() {
 }
 
 // basic handler that responds with a static string
-async fn root() -> IndexPage<'static> {
-    IndexPage {
-        text: "hello!!!!!!!",
-    }
+async fn root() -> HomePage {
+    HomePage
 }

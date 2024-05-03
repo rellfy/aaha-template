@@ -1,0 +1,29 @@
+<div class="footer">
+  <div class="wrapper">
+    <!--    <PageLink to="info" className={styles.button}>-->
+    <!--      <i class={classNames("fa-solid fa-circle-info", styles.icon)}></i>-->
+    <!--    </PageLink>-->
+    <span
+      class="button"
+      hx-get="/"
+      hx-swap="none"
+      x-on:click="
+        $store.page.setIsLoading(true);
+        window.history.pushState(null, window.document.title, '/');
+      "
+    >
+      <i class="fa-solid fa-house icon"></i>
+    </span>
+    <span
+      class="button"
+      hx-get="/user"
+      hx-swap="none"
+      x-on:click="
+        $store.page.setIsLoading(true);
+        window.history.pushState(null, window.document.title, '/user');
+      "
+    >
+      <i class="fa-solid fa-user icon"></i>
+    </span>
+  </div>
+</div>

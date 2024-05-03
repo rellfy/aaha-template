@@ -1,0 +1,13 @@
+{% extends "layouts/layout.html" %}
+{%- import "components/button.html" as button -%}
+
+{% block page %}
+<div
+  hx-swap-oob="true"
+  id="page-content"
+>
+  this is the user page<br>
+  <p class="shiny">shiny!</p><br>
+  login: {% call button::render(text) %}
+</div>
+{% endblock %}
