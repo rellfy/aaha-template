@@ -3,6 +3,28 @@
 version = 3
 
 [[package]]
+name = "aaha-template"
+version = "0.1.0"
+dependencies = [
+ "askama",
+ "askama_axum",
+ "axum",
+ "dotenv",
+ "env_logger",
+ "glob",
+ "grass",
+ "lightningcss",
+ "log",
+ "memory-serve",
+ "serde",
+ "serde_json",
+ "tokio",
+ "tower",
+ "tower-http",
+ "tracing-subscriber",
+]
+
+[[package]]
 name = "addr2line"
 version = "0.21.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1935,28 +1957,6 @@ name = "vlq"
 version = "0.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "65dd7eed29412da847b0f78bcec0ac98588165988a8cfe41d4ea1d429f8ccfff"
-
-[[package]]
-name = "waha-template"
-version = "0.1.0"
-dependencies = [
- "askama",
- "askama_axum",
- "axum",
- "dotenv",
- "env_logger",
- "glob",
- "grass",
- "lightningcss",
- "log",
- "memory-serve",
- "serde",
- "serde_json",
- "tokio",
- "tower",
- "tower-http",
- "tracing-subscriber",
-]
 
 [[package]]
 name = "walkdir"
