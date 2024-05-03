@@ -1,9 +1,9 @@
 # waha-template
 
 - warp/axum (todo: decide)
-- askama
-- htmx
-- alpine
+- [askama](https://github.com/djc/askama)
+- [htmx](https://htmx.org)
+- [alpine](https://alpinejs.dev)
 
 ## Summary
 
