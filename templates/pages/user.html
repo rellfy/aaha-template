@@ -7,7 +7,7 @@
   id="page-content"
 >
   this is the user page<br>
-  <p class="shiny">shiny!</p><br>
-  login: {% call button::render(text) %}
+  user name: {{ user_name }}
+  login: {% call button::render("do login") %}
 </div>
 {% endblock %}
