@@ -1,0 +1,89 @@
+:root {
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+  --border-radius: 12px;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+  "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+  "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+  --font: "PressStart2P", Arial, sans-serif;
+  --white: #fcfafa;
+  --black: #423e37;
+  --gold: #e3b23c;
+  --cyan: #16bac5;
+  --blue: #2d7dd2;
+  --red: #d1250f;
+  --taskbar-height: 65px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: "PressStart2P", Arial, sans-serif;
+  font-family: var(--font);
+}
+
+body {
+  color: var(--black);
+  background: var(--white);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+@font-face {
+  font-family: "PressStart2P";
+  src: url("/PressStart2P-Regular.ttf");
+}
+
+.root {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 10fr auto;
+  grid-template-areas:
+    "h"
+    "b"
+    "f";
+  width: 100vw;
+  height: 100vh;
+  height: -webkit-fill-available;
+  height: 100dvh;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.page {
+  grid-area: b;
+  overflow: auto;
+  overflow-wrap: break-word;
+  padding: 5%;
+}
+
+@media (min-width: 1200px) and (min-height: 800px) {
+  body {
+    padding: calc(50vh - 400px) calc(50vw - 600px);
+    background-color: #303030;
+  }
+
+  .root {
+    width: 1200px;
+    height: 800px;
+  }
+}

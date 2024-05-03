@@ -1,0 +1,12 @@
+.logo {
+  user-select: none;
+  cursor: default;
+  background-image: url("/assets/logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  display: inline-block;
+  vertical-align: middle;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
