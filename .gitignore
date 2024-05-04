@@ -1,3 +1,4 @@
 target/
 assets/artifacts/
 .idea/
+.env
