@@ -6,8 +6,14 @@
   hx-swap-oob="true"
   id="page-content"
 >
-  this is the user page<br>
-  user name: {{ user_name }}
-  login: {% call button::render("do login") %}
+  <p>this is the user page</p>
+  <p>user: {{ user_name }}</p>
+  <p>login: {% call button::render("lol this doesn't do anything") %}</p>
+  <br>
+  <p>
+    this user page will include authentication with SQLx
+    in a future version.
+    for now, only hopes and dreams.
+  </p>
 </div>
 {% endblock %}
