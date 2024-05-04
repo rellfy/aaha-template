@@ -1,0 +1,58 @@
+name: Publish and Deploy
+on:
+  push:
+    branches: [ "master" ]
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  CONTAINER_NAME: aaha
+  CONTAINER_HOST_NAME: aaha.rellfy.com
+  PORT: 1337
+jobs:
+  publish-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Log in to the Container registry
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+      - name: Deploy image
+        uses: fifsky/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          user: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_PRIVATE_SSH_KEY }}
+          command: >
+            docker login ${{ env.REGISTRY }} \
+              --username ${{ github.actor }} \
+              --password ${{ secrets.GITHUB_TOKEN }};
+            docker image pull ${{ steps.meta.outputs.tags }};
+            docker container stop ${{ env.CONTAINER_NAME }};
+            docker container rm ${{ env.CONTAINER_NAME }};
+            docker run --detach \
+              --name ${{ env.CONTAINER_NAME }} \
+              --env "VIRTUAL_HOST=${{ env.CONTAINER_HOST_NAME }}" \
+              --env "LETSENCRYPT_HOST=${{ env.CONTAINER_HOST_NAME }}" \
+              --env "VIRTUAL_PORT=${{ env.PORT }}" \
+              --env "PORT=${{ env.PORT }}" \
+              --restart=always \
+              ${{ steps.meta.outputs.tags }}
