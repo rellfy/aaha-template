@@ -1,14 +1,48 @@
 {% extends "layouts/layout.html" %}
-{%- import "components/button.html" as button -%}
+{% import "components/button.html" as button %}
+{% import "components/link.html" as link %}
 
 {% block page %}
 <div
+  class="home_page"
   hx-swap-oob="true"
   id="page-content"
 >
   <p class="shiny">aaha-template</p>
-  <p>this is the home page.</p>
-  <p>it is not very interesting, just a static page.</p>
-  <p>there are more interesting things in the user page!</p>
+  <p>the aaha stack is comprised of:</p>
+  <br>
+  <ul>
+    <li>
+      {% call link::render(
+      "axum",
+      "https://github.com/tokio-rs/axum"
+      )%}: web server
+    </li>
+    <li>
+      {%
+      call link::render("askama", "https://github.com/djc/askama")
+      %}: templating
+    </li>
+    <li>
+      {%
+      call link::render("htmx", "https://htmx.org")
+      %}: horse with laser eyes
+    </li>
+    {%
+    <li>
+      call link::render("alpine", "https://alpinejs.dev")
+      %}: js interactivity
+    </li>
+  </ul>
+  <br>
+  <p>
+    you can find the template repo&nbsp;
+    {% call link::render("here", "https://github.com/rellfy/aaha-template") %}
+  </p>
+  <br>
+  <p>
+    the user page will include authentication with SQLx
+    in a future version.
+  </p>
 </div>
 {% endblock %}
