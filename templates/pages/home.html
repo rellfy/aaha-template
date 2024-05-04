@@ -1,5 +1,4 @@
 {% extends "layouts/layout.html" %}
-{% import "components/button.html" as button %}
 {% import "components/link.html" as link %}
 
 {% block page %}
@@ -28,8 +27,8 @@
       call link::render("htmx", "https://htmx.org")
       %}: horse with laser eyes
     </li>
-    {%
     <li>
+      {%
       call link::render("alpine", "https://alpinejs.dev")
       %}: js interactivity
     </li>
