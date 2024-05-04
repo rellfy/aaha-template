@@ -10,15 +10,21 @@ use thiserror::Error;
 pub static CONFIG: Lazy<Config> = Lazy::new(|| Config::from_env().unwrap());
 
 const DEFAULT_PORT: u16 = 3000;
+const DEFAULT_JWT_EXPIRATION_MINUTES: u64 = 1440;
 
 pub struct Config {
     pub port: u16,
+    pub jwt_secret: String,
+    pub jwt_expiration_minutes: u64,
 }
 
 impl Config {
     pub fn from_env() -> eyre::Result<Self> {
         Ok(Self {
             port: get_var("PORT").unwrap_or(DEFAULT_PORT),
+            jwt_secret: get_var("JWT_SECRET")?,
+            jwt_expiration_minutes: get_var("JWT_EXPIRATION_MINUTES")
+                .unwrap_or(DEFAULT_JWT_EXPIRATION_MINUTES),
         })
     }
 }
@@ -33,9 +39,9 @@ enum EnvError {
 
 /// Fetches and parses an environment variable into type T.
 fn get_var<T>(var: &str) -> eyre::Result<T>
-    where
-        T: FromStr,
-        <T as FromStr>::Err: Debug + StdError + Send + Sync + 'static,
+where
+    T: FromStr,
+    <T as FromStr>::Err: Debug + StdError + Send + Sync + 'static,
 {
     Ok(env::var(var)
         .map_err(|e| EnvError::Var(var.to_owned(), e))?

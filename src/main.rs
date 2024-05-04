@@ -1,10 +1,11 @@
 use crate::routes::router;
-use log::info;
 pub use config::CONFIG;
+use log::info;
 
-mod routes;
 mod config;
-
+mod routes;
+pub mod user;
+pub mod utils;
 
 #[tokio::main]
 async fn main() {
