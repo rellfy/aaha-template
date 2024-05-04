@@ -22,6 +22,9 @@ eyre = "0.6"
 thiserror = "1"
 jsonwebtoken = "9"
 uuid = { version = "1", features = ["v4", "fast-rng"] }
+axum_typed_multipart = "0.11.1"
+rand = "0.8.5"
+axum-macros = "0.4.1"
 
 [build-dependencies]
 grass = "0.13.2"
