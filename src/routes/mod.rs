@@ -11,5 +11,5 @@ pub fn router() -> Router {
         .merge(index::router())
         .merge(user::router())
         .layer(TraceLayer::new_for_http())
-        .merge(memory_router)
+        .nest_service("/assets", memory_router)
 }
