@@ -5,7 +5,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  CONTAINER_NAME: aaha
+  CONTAINER_NAME: aaha-template
   CONTAINER_HOST_NAME: aaha.rellfy.com
   PORT: 1337
 jobs:
