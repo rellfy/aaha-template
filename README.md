@@ -12,6 +12,11 @@ This template aims to keep complexity low.
 
 ![](blazingly_fast.jpg)
 
+## Running
+
+Simply do `cargo run` or `sh watch.sh` for local development.
+CSS bundles are generated on each compilation.
+
 ## Overview
 
 ### assets/
