@@ -5,6 +5,7 @@ WORKDIR /app-build
 COPY ./Cargo.toml ./Cargo.toml
 RUN apt-get update \
     && apt-get install -y pkg-config libssl-dev git m4 libssl3 openssl
+ADD . ./
 RUN cargo --version
 RUN rustc --version
 RUN cargo build --release
