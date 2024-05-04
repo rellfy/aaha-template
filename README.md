@@ -47,3 +47,9 @@ output CSS file at `assets/artifacts/bundle.css`.
 Askama templates.
 
 The directory is split into `components/`, `layouts/` and `pages/`.
+
+## Resources
+
+- [Jinja Best Practices (archived from Chromium wiki)][0]
+
+[0]: https://web.archive.org/web/20211114230809/https://www.chromium.org/developers/jinja
