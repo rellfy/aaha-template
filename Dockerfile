@@ -1,7 +1,7 @@
 FROM rust:1.76.0-slim as builder
 ARG DATABASE_URL
-RUN USER=root cargo new --bin app
-WORKDIR /app
+RUN USER=root cargo new --bin app-build
+WORKDIR /app-build
 COPY ./Cargo.toml ./Cargo.toml
 RUN apt-get update \
     && apt-get install -y pkg-config libssl-dev git m4 libssl3 openssl
@@ -11,8 +11,8 @@ RUN cargo build --release
 
 FROM debian:bookworm as runtime
 WORKDIR /bin
-# Copy from builder and rename binary to "server"
-COPY --from=builder /app/target/release/server /bin/server
+# Copy from builder and rename binary to "server".
+COPY --from=builder /app-build/target/release/aaha-template /bin/server
 RUN apt-get update \
     && apt-get install -y ca-certificates tzdata \
     && rm -rf /var/lib/apt/lists/*
