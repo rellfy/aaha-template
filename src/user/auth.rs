@@ -23,7 +23,7 @@ static VALIDATION: Lazy<Validation> = Lazy::new(|| {
 struct Claims {
     /// Expiration. Unix timestamp.
     exp: u64,
-    /// Issues at. Unix timestamp.
+    /// Issued at. Unix timestamp.
     iat: u64,
     /// Subject, i.e. stringified user UUID.
     sub: String,
