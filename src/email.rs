@@ -1,11 +1,9 @@
 use crate::CONFIG;
 use eyre::eyre;
-use lettre::message::header::{ContentType, Subject};
+use lettre::message::header::ContentType;
 use lettre::message::Mailbox;
 use lettre::transport::smtp::authentication::Credentials;
-use lettre::{
-    AsyncSmtpTransport, AsyncTransport, Message, SmtpTransport, Tokio1Executor, Transport,
-};
+use lettre::{AsyncSmtpTransport, AsyncTransport, Message, Tokio1Executor};
 use log::error;
 use once_cell::sync::Lazy;
 use std::clone::Clone;
