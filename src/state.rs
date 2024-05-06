@@ -1,6 +1,5 @@
 use crate::db_client::DbClient;
 
-
 #[derive(Clone)]
 pub struct ServerState {
     pub db_client: DbClient,
