@@ -55,6 +55,7 @@ jobs:
             docker container rm ${{ env.CONTAINER_NAME }};
             docker run --detach \
               --name ${{ env.CONTAINER_NAME }} \
+              --build-arg="DATABASE_URL=${{ secrets.DATABASE_URL }}"
               --env "VIRTUAL_HOST=${{ env.CONTAINER_HOST_NAME }}" \
               --env "LETSENCRYPT_HOST=${{ env.CONTAINER_HOST_NAME }}" \
               --env "VIRTUAL_PORT=${{ env.PORT }}" \
