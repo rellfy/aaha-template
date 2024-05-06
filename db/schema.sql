@@ -1,5 +1,5 @@
--- Use pgcrypto extension for UUID support.
-CREATE EXTENSION "pgcrypto";
+-- Use extension for UUID support.
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE "user" (
   "id" uuid PRIMARY KEY DEFAULT uuid_generate_v4(),

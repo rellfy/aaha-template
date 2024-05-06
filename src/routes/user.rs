@@ -118,6 +118,7 @@ async fn handle_put_auth(
         .db_client
         .store_otp(otp.as_u32(), &form.email, exp_timestamp_unix)
         .await?;
+    // TODO: sent OTP via email.
     Ok(UserPageContent {
         user: None,
         otp_response: Some(OtpResponse {

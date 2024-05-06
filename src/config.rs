@@ -16,6 +16,7 @@ pub struct Config {
     pub port: u16,
     pub jwt_secret: String,
     pub jwt_expiration_minutes: u64,
+    pub database_url: String,
 }
 
 impl Config {
@@ -25,6 +26,7 @@ impl Config {
             jwt_secret: get_var("JWT_SECRET")?,
             jwt_expiration_minutes: get_var("JWT_EXPIRATION_MINUTES")
                 .unwrap_or(DEFAULT_JWT_EXPIRATION_MINUTES),
+            database_url: get_var("DATABASE_URL")?,
         })
     }
 }

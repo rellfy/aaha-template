@@ -26,6 +26,7 @@ axum_typed_multipart = "0.11.1"
 rand = "0.8.5"
 axum-macros = "0.4.1"
 axum-extra = { version = "0.9.3", features = ["typed-header", "cookie"] }
+sqlx = { version = "0.7", features = ["runtime-tokio", "tls-native-tls", "postgres", "macros", "bigdecimal"] }
 
 [build-dependencies]
 grass = "0.13.2"
