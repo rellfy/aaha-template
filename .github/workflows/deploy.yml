@@ -12,7 +12,7 @@ env:
   SMTP_HOST: ${{ secrets.SMTP_HOST }}
   SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
   SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-  SMTP_EMAIL_SENDER: ${{ env.SMTP_EMAIL_SENDER }}
+  SMTP_EMAIL_SENDER: ${{ vars.SMTP_EMAIL_SENDER }}
 jobs:
   publish-and-deploy:
     runs-on: ubuntu-latest
