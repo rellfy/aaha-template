@@ -8,6 +8,7 @@ env:
   CONTAINER_NAME: aaha-template
   CONTAINER_HOST_NAME: aaha.rellfy.com
   PORT: 1337
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
 jobs:
   publish-and-deploy:
     runs-on: ubuntu-latest
@@ -55,5 +56,6 @@ jobs:
               --env "VIRTUAL_PORT=${{ env.PORT }}" \
               --env "PORT=${{ env.PORT }}" \
               --env "JWT_SECRET=${{ secrets.JWT_SECRET }}" \
+              --env "DATABASE_URL=${{ secrets.DATABASE_URL }}" \
               --restart=always \
               ${{ steps.meta.outputs.tags }}
