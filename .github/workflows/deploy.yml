@@ -9,6 +9,10 @@ env:
   CONTAINER_HOST_NAME: aaha.rellfy.com
   PORT: 1337
   DATABASE_URL: ${{ secrets.DATABASE_URL }}
+  SMTP_HOST: ${{ secrets.SMTP_HOST }}
+  SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+  SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+  SMTP_EMAIL_SENDER: ${{ env.SMTP_EMAIL_SENDER }}
 jobs:
   publish-and-deploy:
     runs-on: ubuntu-latest
@@ -57,5 +61,9 @@ jobs:
               --env "PORT=${{ env.PORT }}" \
               --env "JWT_SECRET=${{ secrets.JWT_SECRET }}" \
               --env "DATABASE_URL=${{ secrets.DATABASE_URL }}" \
+              --env "SMTP_HOST=${{ secrets.SMTP_HOST }}" \
+              --env "SMTP_USERNAME=${{ secrets.SMTP_USERNAME }}" \
+              --env "SMTP_PASSWORD=${{ secrets.SMTP_PASSWORD }}" \
+              --env "SMTP_EMAIL_SENDER=${{ env.SMTP_EMAIL_SENDER }}" \
               --restart=always \
               ${{ steps.meta.outputs.tags }}
