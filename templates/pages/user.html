@@ -1,19 +1,42 @@
 {% extends "layouts/layout.html" %}
-{%- import "components/button.html" as button -%}
 
 {% block page %}
 <div
   hx-swap-oob="true"
   id="page-content"
 >
-  <p>this is the user page</p>
-  <p>user: {{ user_name }}</p>
-  <p>login: {% call button::render("lol this doesn't do anything") %}</p>
-  <br>
-  <p>
-    this user page will include authentication with SQLx
-    in a future version.
-    for now, only hopes and dreams.
-  </p>
+  {% if let Some(user) = user %}
+  <h3>you're logged in</h3>
+  <p>user id: {{ user.uuid }}</p>
+  <p>auth token: {{ user.jwt }}</p>
+  <button @click="signOut()" x-data>sign out</button>
+  {% else if let Some(otp_response) = otp_response %}
+  <h3>confirm otp</h3>
+  <p>the otp was sent to your email.</p>
+  <p>just kidding, the email part isn't implemented.</p>
+  <p>this is your OTP, just enter it below: {{ otp_response.otp }}</p>
+  <form enctype="multipart/form-data" hx-post="/user/auth" hx-swap="none"
+        hx-swap-oob="true">
+    <label>otp:</label><br/>
+    <input
+      id="email"
+      name="email"
+      style="display: none;"
+      type="email"
+      value="{{ otp_response.email }}"
+    /><br/>
+    <input id="otp" name="otp" type="number"/><br/>
+    <input type="submit"/>
+  </form>
+  {% else %}
+  <h3>login or register</h3>
+  <b>you are not logged in!</b>
+  <form enctype="multipart/form-data" hx-put="/user/auth" hx-swap="none"
+        hx-swap-oob="true">
+    <label>email:</label><br/>
+    <input id="email" name="email" type="email"/><br/>
+    <input type="submit"/>
+  </form>
+  {% endif %}
 </div>
 {% endblock %}

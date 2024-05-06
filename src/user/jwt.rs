@@ -36,7 +36,11 @@ pub fn generate_jwt(uuid: &Uuid) -> eyre::Result<String> {
         iat: now,
         sub: uuid.to_string(),
     };
-    let token = encode(&Header::default(), &claims, &ENCODING_KEY)?;
+    let header = Header {
+        alg: Algorithm::HS512,
+        ..Default::default()
+    };
+    let token = encode(&header, &claims, &ENCODING_KEY)?;
     Ok(token)
 }
 
