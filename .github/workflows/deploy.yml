@@ -54,5 +54,6 @@ jobs:
               --env "LETSENCRYPT_HOST=${{ env.CONTAINER_HOST_NAME }}" \
               --env "VIRTUAL_PORT=${{ env.PORT }}" \
               --env "PORT=${{ env.PORT }}" \
+              --env "JWT_SECRET=${{ secrets.JWT_SECRET }}" \
               --restart=always \
               ${{ steps.meta.outputs.tags }}
