@@ -12,6 +12,8 @@ pub enum Error {
     ServerError(eyre::Report),
     #[error("invalid OTP code")]
     InvalidOtp,
+    #[error("invalid email")]
+    InvalidEmail,
 }
 
 pub type RouteResult<T> = Result<T, Error>;

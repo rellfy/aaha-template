@@ -12,9 +12,7 @@
   <button @click="signOut()" x-data>sign out</button>
   {% else if let Some(otp_response) = otp_response %}
   <h3>confirm otp</h3>
-  <p>the otp was sent to your email.</p>
-  <p>just kidding, the email part isn't implemented.</p>
-  <p>this is your OTP, just enter it below: {{ otp_response.otp }}</p>
+  <p>the otp was sent to your email (check spam inbox)</p>
   <form enctype="multipart/form-data" hx-post="/user/auth" hx-swap="none"
         hx-swap-oob="true">
     <label>otp:</label><br/>

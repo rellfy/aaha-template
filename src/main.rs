@@ -5,6 +5,7 @@ pub use state::ServerState;
 
 mod config;
 pub mod db_client;
+pub mod email;
 pub mod error;
 mod routes;
 mod state;

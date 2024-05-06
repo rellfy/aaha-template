@@ -1,3 +1,4 @@
+use crate::email::send_email;
 use crate::error::{Error, RouteResult};
 use crate::user::jwt::{generate_jwt, validate_jwt};
 use crate::user::otp::Otp;
@@ -11,7 +12,9 @@ use axum::routing::{get, post, put};
 use axum::Router;
 use axum_extra::extract::CookieJar;
 use axum_typed_multipart::{TryFromMultipart, TypedMultipart};
+use lettre::message::Mailbox;
 use log::error;
+use std::str::FromStr;
 
 struct UserView {
     uuid: String,
@@ -19,7 +22,6 @@ struct UserView {
 }
 
 struct OtpResponse {
-    otp: String,
     email: String,
 }
 
@@ -118,11 +120,18 @@ async fn handle_put_auth(
         .db_client
         .store_otp(otp.as_u32(), &form.email, exp_timestamp_unix)
         .await?;
-    // TODO: sent OTP via email.
+    let Ok(mailbox) = Mailbox::from_str(&form.email) else {
+        return Error::InvalidEmail.into();
+    };
+    send_email(
+        mailbox,
+        "Your OTP login code".to_owned(),
+        format!("Login using the following OTP code: {}", otp.to_string()),
+    )
+    .await?;
     Ok(UserPageContent {
         user: None,
         otp_response: Some(OtpResponse {
-            otp: otp.to_string(),
             email: form.email.clone(),
         }),
     })

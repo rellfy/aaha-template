@@ -1,3 +1,4 @@
+use lettre::message::Mailbox;
 use log::error;
 use once_cell::sync::Lazy;
 use serde::de::StdError;
@@ -17,6 +18,10 @@ pub struct Config {
     pub jwt_secret: String,
     pub jwt_expiration_minutes: u64,
     pub database_url: String,
+    pub smtp_host: String,
+    pub smtp_username: String,
+    pub smtp_password: String,
+    pub smtp_email_sender: Mailbox,
 }
 
 impl Config {
@@ -27,6 +32,10 @@ impl Config {
             jwt_expiration_minutes: get_var("JWT_EXPIRATION_MINUTES")
                 .unwrap_or(DEFAULT_JWT_EXPIRATION_MINUTES),
             database_url: get_var("DATABASE_URL")?,
+            smtp_host: get_var("SMTP_HOST")?,
+            smtp_username: get_var("SMTP_USERNAME")?,
+            smtp_password: get_var("SMTP_PASSWORD")?,
+            smtp_email_sender: get_var("SMTP_EMAIL_SENDER")?,
         })
     }
 }
