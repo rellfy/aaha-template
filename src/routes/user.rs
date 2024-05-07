@@ -84,30 +84,9 @@ async fn handle_get(jar: CookieJar) -> UserPage {
     };
 }
 
+/// Renders only the page content rather than the entire page HTML.
 async fn handle_get_content(jar: CookieJar) -> UserPageContent {
-    let jwt_opt = jar.get("auth").map(|cookie| cookie.value().to_string());
-    let Some(jwt) = jwt_opt else {
-        return UserPageContent {
-            user: None,
-            otp_response: None,
-        };
-    };
-    let result = validate_jwt(&jwt.to_string());
-    let Ok(uuid) = result else {
-        error!("failed to validate jwt: {result:#?}");
-        return UserPageContent {
-            user: None,
-            otp_response: None,
-        };
-    };
-    let user_view = UserView {
-        uuid: uuid.to_string(),
-        jwt: jwt.to_string(),
-    };
-    return UserPageContent {
-        user: Some(user_view),
-        otp_response: None,
-    };
+    handle_get(jar).await.into()
 }
 
 async fn handle_put_auth(
@@ -160,4 +139,13 @@ async fn handle_post_auth(
         otp_response: None,
     };
     Ok((headers, content))
+}
+
+impl From<UserPage> for UserPageContent {
+    fn from(value: UserPage) -> Self {
+        Self {
+            user: value.user,
+            otp_response: value.otp_response,
+        }
+    }
 }
