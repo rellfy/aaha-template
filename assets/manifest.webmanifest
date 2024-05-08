@@ -1,7 +1,7 @@
 {
-  "name": "waha-template",
-  "short_name": "waha-template",
-  "description": "waha-template",
+  "name": "aaha-template",
+  "short_name": "aaha-template",
+  "description": "aaha-template",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#fff",
