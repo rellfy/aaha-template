@@ -11,7 +11,12 @@ const ARTIFACTS_PATH: &str = "assets/artifacts";
 const OUTPUT_PATH: &str = "assets/artifacts/bundle.css";
 
 fn main() {
+    force_always_run_this_script();
     transpile_scss();
+}
+
+fn force_always_run_this_script() {
+    println!("cargo:rerun-if-changed=NULL");
 }
 
 fn transpile_scss() {
