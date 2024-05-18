@@ -3,18 +3,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - core/**
-      - server/**
-      - client-cli/**
-      - client/**
-      - api-types/**
-      - contracts/**
-      - event-sinks/**
-      - Cargo.toml
-      - Cargo.lock
-      - .cargo
-      - .github/workflows/cargo*
   # Allows to run this workflow manually from the Actions tab
   workflow_dispatch:
 env:
